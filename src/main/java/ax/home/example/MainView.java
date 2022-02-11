@@ -2,8 +2,6 @@ package ax.home.example;
 
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.checkbox.Checkbox;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -13,17 +11,14 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.converter.AbstractStringToNumberConverter;
 import com.vaadin.flow.router.Route;
-
-import javax.swing.*;
 
 @Route("")
 public class MainView extends VerticalLayout{
     public MainView() {
-        Parser test = new Parser();
+        Parser parser = new Parser();
         try {
-            test.parse("/prospects.txt");
+            parser.parse("/prospects.txt");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -58,7 +53,7 @@ public class MainView extends VerticalLayout{
         Button addButton = new Button("Add prospect");
 
         TextArea textArea = new TextArea();
-        textArea.setValue(test.getPrintString());
+        textArea.setValue(parser.getPrintString());
         textArea.setReadOnly(true);
         textArea.setWidth("50%");
 
@@ -73,8 +68,8 @@ public class MainView extends VerticalLayout{
         addButton.addClickListener(click -> {
             if (!name.getValue().isEmpty() && !amount.isEmpty() && !years.isEmpty() && !interest.isEmpty()) {
                 Customer newCustomer = new Customer(name.getValue(), amount.getValue(), years.getValue(), interest.getValue());
-                test.addCustomer(newCustomer);
-                textArea.setValue(test.getPrintString());
+                parser.addCustomer(newCustomer);
+                textArea.setValue(parser.getPrintString());
             }
         });
 

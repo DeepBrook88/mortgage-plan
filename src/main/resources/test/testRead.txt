@@ -1,0 +1,4 @@
+Customer,Total loan,Interest,Years
+Kalle Anka,12345,5,10
+"Joakim von Anka","1400",3.45,4
+"Knatte,Anka",430,3.5,6

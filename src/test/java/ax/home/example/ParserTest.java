@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,15 @@ class ParserTest {
 
     @Test
     void getPrintString() {
+        // Kalle Anka,12345,5,10
+        // "Joakim von Anka","1400",3.45,4
+        // "Knatte,Anka",430,3.5,6
+        Parser p = new Parser();
+        p.parse("/test/testRead.txt");
+        assertEquals("Kalle Anka", p.getCustomers().get(0).getName());
+        assertEquals("Joakim von Anka", p.getCustomers().get(1).getName());
+        assertEquals(1400, p.getCustomers().get(1).getAmount());
+        assertEquals("Knatte,Anka", p.getCustomers().get(2).getName());
     }
 
     @Test
