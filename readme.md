@@ -1,9 +1,10 @@
 # Mortgage Plan
-coding exercise, crosskey
+coding exercise for Crosskey trainee
 ## Installation
 ### run locally
 run 
 * `mvnw install`
+* `mvnw spring-boot:run`
 ### run in docker container
 run
 * `mvnw install -Pproduction`
